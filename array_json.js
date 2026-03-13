@@ -156,6 +156,10 @@ const manipularDados = function(){
     listaDeFornecedores.splice(2,1)
     console.table(listaDeFornecedores)
 
+    // splice() -> permite remover um elemento baseado no indice em um determinado lugar no array
+    listaDeFornecedores.splice(2,0, 'carlos da silva')
+    tabela.table(listaDeFornecedores)
+
 }
 const removerItem = function(nome){
 
@@ -189,4 +193,26 @@ const qtdeDados = function(nome){
 
     return cont
 }
-console.log(qtdeDados('nicolas'))
+const criandoDadosJson = function(){
+    let aluno = {"nome": "jose",
+                 "ra":123456,
+                 "telefone": 973024242,
+                 "email": "jose@gmail.com"}
+
+    // exibe o objeto do json com a tabela
+    console.table(aluno)
+    // exibe o objeto json completo
+    console.log(aluno)
+
+
+        // add novo elemento 
+    aluno.sexo = 'masculino'
+        console.log
+
+        // remove um elemento 
+        delete aluno.telefone
+        console.log(aluno)
+}
+const cadastroDeProdutos = function(){
+    
+}
