@@ -1,125 +1,29 @@
 /***************
- * 
  * Objetivo: Manipular dados utilizando Array e JSON
- * Data: 05?03/2026
- * autor: Hugo
+ * Autor: Hugo
  * Versão: 1.0
- */
+ ***************/
 
+const listaNomes = [
+    'arcanjo','nicolas','nicolas','henrique',
+    'kauan','caua','miguel','kaiky','rafael','pietro'
+]
 
-/* [] --> representa um objeto do tipo array
-   {} --> representa um objeto tipo json
-
-   Array -> é um objeto na memória que permite tranalhar com varios valores 
-            em um único objeto
-
-        let nome    = 'jose'
-        let nome2   = 'maria'
-        let nom3    = 'carlos'
-
-                indice      0       1        2
-        let nome    =   ['jose', 'maria', 'carlos']        
-
-    JASON -> É um objeto na memoria que permite trabalhar com chave e valor
-
-    let nome     =   'jose'
-    let telefone =   '1234567'
-    let email    =   'jose@gmail.com'
-
-
-    let cliente = { 'nome': 'jose'
-                    'telefone': '1234567'
-                    'email': 'jose@gmail.com'
-    
-    }
-*/
-
-const listaNomes = ['arcanjo',
-                    'nicolas',
-                    'nicolas',
-                    'henrique',
-                    'kauan',
-                    'caua', 
-                    'miguel',
-                    'kaiky', 
-                    'rafael',
-                    'pietro']
-const listaCliente    = []
-const listaDeFornecedores= []
-
+const listaCliente = []
+const listaDeFornecedores = []
 
 const exibirDados = function(){
 
-    //Exibe o objeto array e seu conteudo
-    console.table (listaNomes)
-
-    //exibe o objeto array em formato de tabela com seus indices
     console.table(listaNomes)
+    console.table(listaNomes)
+    console.log(listaNomes[1])
 
-    //exibe apenas o valor respectivo indice do array
-    console.table(listaNomes[1])
-    
-    //retorna um indice de dados do tipo array
-    console.table(typeof(listaNomes[4])
+    console.log(typeof(listaNomes[4]))
 
-
-    //exibe um nome 
-    // console.table(`O nome do cliente é: ${listaNomes[0]}`)
-    // console.table(`O nome do cliente é: ${listaNomes[1]}`)
-    // console.table(`O nome do cliente é: ${listaNomes[2]}`)
-    
-/************
-    estruturas de repetição
-    while
-
-    let cont = 0;
-    while(cont <= 4){
-        console.table(`O nome do cliente é: ${listaNomes[3]}`)
-        cont++
-
-    }
- ************/
-
-
-/*************** 
-estruturas de repetição
-    for
-
-    for(let cont = 0; cont <= 4; cont++){
-        console.table(`O nome do cliente é: ${listaNomes[3]}`)
-      cont++
-    }
-
-******************/
-
-     //estruturas de repetição
-    //  console.table('---------------FOR EACH----------------')
-    // listaNomes.forEach(function(cliente){
-    //     console.table(`O nome do cliente é: ${cliente}`)
-    // })
-
-
-/**************  
- estruturas de repetição
-    for in
-
-
-    for(item in listaNomes){
-        console.table(`o nome do cliente é:  ${listaNomes[item]}`)
-    }
-*************/
-
-/***************
-estruturas de repetição
-    for of
-
-
-    for (cliente of listaNomes){
-        console.log(`o nome do cliente é:  ${cliente}`)
-    }
-******************/
-)}
-
+    listaNomes.forEach(function(cliente){
+        console.log(`O nome do cliente é: ${cliente}`)
+    })
+}
 
 const manipularDados = function(){
 
@@ -129,90 +33,175 @@ const manipularDados = function(){
 
     console.table(listaCliente)
 
-    //o push permite add novos valores no array sempre no final da lista
     listaDeFornecedores.push('Cheshire')
     listaDeFornecedores.push('Fllyn diss')
     listaDeFornecedores.push('Brutal da Silva')
     listaDeFornecedores.push('claus da silva')
     listaDeFornecedores.push('vordx souzas')
 
-    console.table (listaDeFornecedores)
+    console.table(listaDeFornecedores)
 
-    // o unshift sempre add novos valores sempre no inicio da lista
     listaDeFornecedores.unshift('Lilian cardosa')
     console.table(listaDeFornecedores)
 
-
-    // Ele remove elementos do final da lista
     listaDeFornecedores.pop()
     console.table(listaDeFornecedores)
 
-    // ele remove o conteudo do inicio da lista
     listaDeFornecedores.shift()
     console.table(listaDeFornecedores)
 
-    // permite remover um elemento baseado no indice da lista
-            // splice (indice, qtde elementos)
     listaDeFornecedores.splice(2,1)
     console.table(listaDeFornecedores)
 
-    // splice() -> permite remover um elemento baseado no indice em um determinado lugar no array
-    listaDeFornecedores.splice(2,0, 'carlos da silva')
-    tabela.table(listaDeFornecedores)
-
+    listaDeFornecedores.splice(2,0,'carlos da silva')
+    console.table(listaDeFornecedores)
 }
-const removerItem = function(nome){
 
-    // retorna o indice de um elemento fazendo a busca pelo valor
-        //  se o indexof nao encontrar o conteudo ele retorna -1
+const removerItem = function(nome){
     let indice = listaNomes.indexOf(nome)
-    if (indice != -1){
-        listaNomes.splice(indice, 1)
+
+    if(indice != -1){
+        listaNomes.splice(indice,1)
         return true
     }
-    console.log(indice)
 
-//     for(indice in listaNomes){
-//         if(listaNomes[indice] == nome){
-//             listaNomes.splice(indice,1)
-//         }
-//     }
+    return false
 }
-const verificarItem = function(nome){
 
-    // include verifica a existencia de um conteudo dentro de uma lista (true/false)
+const verificarItem = function(nome){
     return listaNomes.includes(nome)
 }
+
 const qtdeDados = function(nome){
-    let cont = 0;
+    let cont = 0
+
     listaNomes.forEach(function(item){
         if(String(item).toUpperCase() == String(nome).toUpperCase()){
             cont++
         }
-    });
+    })
 
     return cont
 }
-const criandoDadosJson = function(){
-    let aluno = {"nome": "jose",
-                 "ra":123456,
-                 "telefone": 973024242,
-                 "email": "jose@gmail.com"}
 
-    // exibe o objeto do json com a tabela
+const criandoDadosJson = function(){
+    let aluno = {
+        nome: "jose",
+        ra: 123456,
+        telefone: 973024242,
+        email: "jose@gmail.com"
+    }
+
     console.table(aluno)
-    // exibe o objeto json completo
     console.log(aluno)
 
-
-        // add novo elemento 
     aluno.sexo = 'masculino'
-        console.log
+    console.log(aluno)
 
-        // remove um elemento 
-        delete aluno.telefone
-        console.log(aluno)
+    delete aluno.telefone
+    console.log(aluno)
 }
+
 const cadastroDeProdutos = function(){
-    
+
+    let cores = [
+        {"id":1,"cor":"branco"},
+        {"id":2,"cor":"preto"},
+        {"id":3,"cor":"azul"},
+        {"id":4,"cor":"rosa"},
+        {"id":5,"cor":"cinza"}
+    ]
+
+    let marca = [
+        {"id":1,"marcas":"LG"},
+        {"id":2,"marcas":"Lenovo"},
+        {"id":3,"marcas":"Apple"},
+        {"id":4,"marcas":"Dell"},
+        {"id":5,"marcas":"Razer"},
+        {"id":6,"marcas":"Logitech"},
+        {"id":7,"marcas":"Multilaser"}
+    ]
+
+    let produto = [
+        {
+            "id":1,
+            "nome":"monitor",
+            "descricao":"27 polegadas",
+            "marca":[marca[1].marcas],
+            "qtde":20,
+            "cor":[cores[4],cores[1],cores[3],cores[2]],
+            "valor":800.50
+        },
+        {
+            "id":2,
+            "nome":"teclado",
+            "descricao":"mecanico RGB",
+            "marca":[marca[5].marcas],
+            "qtde":200,
+            "cor":cores,
+            "valor":130.80
+        },
+        {
+            "id":3,
+            "nome":"mouse",
+            "descricao":"sem fio",
+            "marca":[marca[5].marcas, marca[0].marcas, marca[1].marcas],
+            "qtde":800,
+            "cor":[cores[1],cores[0],cores[4]],
+            "valor":86.80
+        }
+    ]
+
+    console.table(produto)
+
+    console.log('----------------------------')
+
+    produto.forEach(function(itemProduto){
+
+        console.log('Produto: ' + itemProduto.nome)
+        console.log('Quantidade: ' + itemProduto.qtde)
+        console.log('Valor: ' + itemProduto.valor)
+
+        console.log('Marcas:')
+        itemProduto.marca.forEach(function(itemMarca){
+            console.log(itemMarca)
+        })
+
+        console.log('Cores:')
+        itemProduto.cor.forEach(function(itemCor){
+            console.log(itemCor.cor)
+        })
+
+    })
+
+    console.log('----------------------------')
+
+    // pesquisando um produto pelo nome 
+    let nome = 'mouse'
+
+    produto.forEach(function(nomeProduto){
+        if (String(nomeProduto.nome).toUpperCase() == String(nome).toUpperCase()){
+            console.log(nomeProduto)
+        }
+    })
+
+    console.log('----------------------------')
+
+    // pesquisando produto pela cor
+    let cor = 'preto'
+    let status = false
+
+    produto.forEach(function(itemProduto){
+        itemProduto.cor.forEach(function(corItem){
+            if (String(corItem.cor).toUpperCase() == String(cor).toUpperCase()){
+                console.log(itemProduto)
+                    status = true
+            }
+        })
+    })
+
+    if(!status)
+        console.log('Item pesquisando não foi encontrado...')
 }
+
+cadastroDeProdutos()
